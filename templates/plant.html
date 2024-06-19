@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medicinal plant website</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --green: rgb(70, 180, 19);
+        --black: white;
+        --light-color: white;
+        --box-shadow: 0 0.5rem 1.5rem rgba(73, 11, 11, 0.1);
+      }
+
+      * {
+        font-family: "Nunito Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        text-transform: capitalize;
+        transition: all 0.2s linear;
+      }
+
+      html {
+        font-size: 62.5%;
+        overflow-x: auto;
+        scroll-padding-top: 5.5rem;
+        scroll-behavior: smooth;
+        background-color: #333 ;
+      }
+
+      
+
+      
+
+      section {
+        padding: 2rem 9%;
+      }
+
+      section:nth-child(even) {
+        background: #eee;
+        }
+
+
+      .sub-heading {
+        text-align: center;
+        color: var(--green);
+        font-size: 2rem;
+        padding-top: 1rem;
+      }
+
+      .heading {
+        text-align: center;
+        color: var(--black);
+        font-size: 3rem;
+        padding-bottom: 2rem;
+        text-transform: uppercase;
+      }
+
+      .btn {
+        margin-top: 1rem;
+        display: inline-block;
+        font-size: 1.7rem;
+        color: #fff;
+        background: var(--black);
+        border-radius: 0.5rem;
+        cursor: pointer;
+        padding: 0.8rem 3rem;
+      }
+
+      .btn:hover {
+        background: var(--green);
+        letter-spacing: 0.1rem;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.233);
+        padding: 1rem 7%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        box-shadow: var(--box-shadow);
+      }
+
+      header .logo {
+        color: rgba(122, 235, 70, 0.699);
+        font-size: 2.5rem;
+        font-weight: bolder;
+        margin-left: 10px;
+      }
+
+      header .logo i {
+        color: var(--green);
+      }
+
+      header .navbar a {
+        font-size: 1.7rem;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1.5rem;
+        color: var(--light-color);
+      }
+
+      header .navbar a.active {
+        color: rgb(77, 218, 64);
+      }
+
+      header .navbar a:hover {
+        color: #fff;
+        background: rgb(64, 104, 5);
+      }
+
+      header .icons i,
+      header .icons a {
+        cursor: pointer;
+        margin-left: 0.5rem;
+        height: 4.5rem;
+        line-height: 4.5rem;
+        width: 4.5rem;
+        text-align: center;
+        font-size: 1.7rem;
+        color: var(--black);
+        border-radius: 50%;
+        background: black;
+      }
+
+      header .icons #menu-bars {
+        display: none;
+      }
+
+      
+
+      .content h1 {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .content h3 {
+        width: 80%;
+        margin: 20px auto 100px;
+        font-weight: 100;
+        line-height: 20px;
+      }
+
+      .sub-menu-wrap {
+        position: absolute;
+        top: 100%;
+        right: 10%;
+        width: 320px;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+      }
+
+      .sub-menu-wrap.open-menu {
+        max-height: 400px;
+      }
+
+      .sub-menu {
+        background: rgba(0, 0, 0, 0.637);
+        padding: 20px;
+        margin: 10px;
+      }
+
+      .user-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .user-info h2 {
+        font-weight: 500;
+        color: #ccc;
+      }
+
+      .user-info img {
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+
+      .sub-menu hr {
+        border: 0;
+        height: 1px;
+        width: 100%;
+        background: #ccc;
+        margin: 15px 0 10px;
+      }
+
+      .sub-menu .sub-menu-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #525252;
+        margin: 12px 0;
+      }
+
+      .sub-menu .sub-menu-link p {
+        align-items: center;
+        font-size: small;
+        color: #ccc;
+        margin-right: 15px;
+        white-space: nowrap;
+      }
+
+      .sub-menu .sub-menu-link img {
+        width: 40px;
+        background: #e5e5e5;
+        border-radius: 50%;
+        padding: 8px;
+        margin-right: 15px;
+        transition: transform 0.5s;
+      }
+
+      .sub-menu .sub-menu-link span {
+        font-size: 20px;
+        transition: transform 0.5s;
+        padding-left: 90px;
+      }
+
+      .sub-menu .sub-menu-link:hover span {
+        transform: translateX(5px);
+      }
+
+      .body {
+        background-color: none;
+        width: 100%;
+        height: 600px;
+      }
+
+      .predictionBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #212120;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        width:600px;
+        margin-left:20px;
+        height:400px;
+        margin-top:20px;
+        }
+
+        .preview img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+       .predictionBox h2{
+        font-size: 24px;
+        margin: 0;
+        color: #fff;
+        text-transform:uppercase;
+        margin: 5px 0;
+       }
+       .predictionBox p{
+        font-size: 16px;
+        margin: 5px 0;
+        color: #666;
+       }
+
+      /* Footer Styles */
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 30px 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-logo a {
+        color: rgb(64, 104, 5);
+        text-decoration: none;
+        font-size: 24px;
+        text-align: left;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .footer-links h2 {
+        color: #ffffff5b;
+        text-decoration: none;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .footer-contact h2 {
+        color: #ffffff5b;
+        margin: 5px 0;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .footer-contact p {
+        color: #fff;
+        margin: 5px 0;
+        font-size: 12px;
+      }
+      .footer-legal ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .footer-legal li {
+        margin-bottom: 16px;
+      }
+
+      .footer-legal h2 {
+        color: #ffffff5b;
+        text-decoration: none;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .footer-legal a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .footer-social a {
+        display: inline-block;
+        margin: 0 10px;
+        color: #fff;
+        font-size: 20px;
+      }
+
+      .footer-social h2 {
+        color: #ffffff5b;
+        text-decoration: none;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .footer-bottom {
+        margin-top: 20px;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body onload="slider()">
+    <!-- Paste the contents of your HTML file here -->
+    <header>
+      <a href="#" class="logo"
+        ><i class="fa-solid fa-leaf"></i>MedicinalPlant</a
+      >
+
+      <nav class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('about') }}">About Us</a>
+        <a href="{{ url_for('plant') }}"class="active">Plant</a>
+        
+      </nav>
+
+      <a href="#"></a>
+      <a href="#"></a>
+    </header>
+
+    <div class="banner">
+      <!--<div class="slider">
+        <img src="{{ url_for('static', filename='images/slide1.jpg') }}" id="slideimg" />
+      </div>-->
+      
+      
+      <div class="overlay">
+        <div class="content">
+
+            <div class="predictionBox">
+                <div class="previewContainer">
+                  <div class="preview">
+                    <img src="{{ url_for('static', filename='images/sarpagandha_34.jpg') }}" alt="Leaf Image" />
+                  </div>
+                </div>
+                <h2><i>Rauwolfia serpentina</i></h2>
+                <p>Local Name: sarpagandha</p>
+                <p>Type of plant: Shrub</p>
+                <p>Family: Apocynaceae</p>
+                <p>Aliments Treated: Hypertension, insomnia, fever, rheumatic fever, bronchitis, asthma, gastric ulcer and pain. The root juice is especially effective in snake venom and insect bites. Reserpine is obtained from the bark of the sarpagandha plant, which is used as a medicine to lower high blood pressure.</p>
+              </div>
+
+              <div class="predictionBox">
+                <div class="previewContainer">
+                  <div class="preview">
+                    <img src="{{ url_for('static', filename='images/punarnava_14.jpg') }}" alt="Leaf Image" />
+                  </div>
+                </div>
+                <h2><i>Boerhavia diffusa L.</i></h2>
+                <p>Local Name: punarnava</p>
+                <p>Type of plant: Herb</p>
+                <p>Family: Nyctaginaceae</p>
+                <p>Aliments treated:Roots are employed for many purposes including liver, gallbladder, kidney, renal and urinary disorders. Leaves are useful in jaundice, anemia, ascites, ophthalmia and dropsy.</p>
+              </div>
+
+              <div class="predictionBox">
+                <div class="previewContainer">
+                  <div class="preview">
+                    <img src="{{ url_for('static', filename='images/kalodhutura_5.jpg') }}" alt="Leaf Image" />
+                  </div>
+                </div>
+                <h2><i>Datura Stramonium L.</i></h2>
+                <p>Local Name: kalodhutura</p>
+                <p>Type of plant: Shrub</p>
+                <p>Family: Solanaceae</p>
+                <p>Aliments Treated: Alleviating pain, treating fever, enhancing heart functions, improving fertility, inducing sleep, easing childbirth and promoting hair and skin health.</p>
+                
+              </div>
+
+              <div class="predictionBox">
+                <div class="previewContainer">
+                  <div class="preview">
+                    <img src="{{ url_for('static', filename='images/leaf4.jpg') }}" alt="Leaf Image" />
+                  </div>
+                </div>
+                <h2><i>Artocarpus chama</i></h2>
+                <p>Local Name: chapalish</p>
+                <p>Type of plant: Tree</p>
+                <p>Family: Moraceae</p>
+                <p>Aliments Treated: Diarrhea, skin diseases, asthma, ulcers etc </p>
+              </div>
+
+        </div>
+      </div>
+  </div>
+
+     <footer>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="#" class="logo"><i class="fas fa-leaf"></i>Plant</a><br />
+          </div>
+          <div class="footer-links">
+            <h2>Explore</h2>
+            <ul>
+              <li><a href="{{ url_for('index') }}">Home</a></li>
+              <li><a href="{{ url_for('about') }}">About Us</a></li>
+              <li><a href="{{ url_for('plant') }}" style="color:#5fbb14">Plant</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h2>Contact Us:</h2>
+            <p>Email: info@plantwebsite.com</p>
+            <p>Phone: +123-456-7890</p>
+            <p>Address: 123 Street, Dhaka, Bangladesh</p>
+          </div>
+          <div class="footer-legal">
+            <h2>Legal</h2>
+            <ul>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h2>Follow US</h2>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 MedicinalPlant Website. All rights reserved.</p>
+        </div>
+      </footer>
+      
+
+    
+  </body>
+</html>
